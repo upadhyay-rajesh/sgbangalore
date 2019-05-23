@@ -37,7 +37,7 @@ public class ReceiverConfig {
 				StringDeserializer.class); 
 		
 		properties.put(ConsumerConfig.CLIENT_ID_CONFIG, "mySprGrp"); 
-		properties.put(ConsumerConfig.GROUP_ID_CONFIG, "mySprGrp"); 
+		
 		
 		return properties; 
 	}

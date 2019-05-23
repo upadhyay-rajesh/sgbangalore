@@ -18,7 +18,8 @@ public class TescoSpringWorkApplication {
 	Sender sender = context.getBean(Sender.class); 
 //	
 	sender.send("topic1", "hello from Spring");
-	sender.send("topic1", new Message("From Message - Spring", "Rajesh").toString());
+	sender.send("topic1", new Message("From Message - Spring", "Rajesh").
+															toString());
 //	
 	
 	

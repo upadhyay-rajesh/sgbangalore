@@ -1,0 +1,112 @@
+<!--<div style='background-color:orange'>
+    <h3>New Contact </h3>
+      <div>
+          <label for="name">Name </label>
+           <input type="text" id="name" #cname>
+      </div>
+ 
+       <div>
+          <label for="email">Email ID </label>
+           <input type="email" id="mail" #mail >
+       </div>
+ 
+        <div>
+            <label for="phone" >Phone</label>
+          <input type="text" id='phone' #ph >  
+       </div>
+ 
+       <input type="submit" value="Add new Contact" 
+         (click)="onInsert(cname.value,mail.value,ph.value)"
+          class="btn-primary">
+ </div>
+ -->
+ <form novalidate [formGroup]="form" (ngSubmit)="submitForm(form)">
+    <div class="form-group" *ngFor="let control of form.productControls">
+        <label>{{control.label}}</label>
+        <input class="form-control" 
+            [(ngModel)]="newProduct[control.modelProperty]"
+            name="{{control.modelProperty}}"
+            formControlName="{{control.modelProperty}}" />
+        <ul class="text-danger list-unstyled"
+                *ngIf="(formSubmitted || control.dirty) && !control.valid">
+            <li *ngFor="let error of control.getValidationMessages()">
+                {{error}}
+            </li>
+        </ul>
+    </div>
+    <button class="btn btn-primary" type="submit"
+        [disabled]="formSubmitted && !form.valid"
+        [class.btn-secondary]="formSubmitted && !form.valid">
+            Create
+    </button>
+</form>
+
+<div style='background-color:orange'>
+
+    
+    
+
+
+<table class="table table-sm table-bordered table-striped">
+    <tr><th></th><th>Name</th><th>Category</th><th>Price</th></tr>
+    <tr *ngFor="let item of getProducts(); let i = index"
+            >
+        <td>{{i + 1}}</td>
+        <td>{{item.name}}</td>
+        <td>
+            {{item.category}}
+        </td>
+        <td>{{item.price}}</td>
+    </tr>
+</table>
+
+
+
+
+</div>
+
+
+
+
+<div style='background-color:yellow'>
+    <h3>Search Train </h3>
+      <div>
+          <label for="name">Source </label>
+           <input type="text" id="ss" #ss>
+      </div>
+ 
+       <div>
+          <label for="email">Destination </label>
+           <input type="text" id="dd" #dd >
+       </div>
+ 
+        
+       <input type="submit" value="search" 
+         (click)="onSearch(ss.value,dd.value)"
+          class="btn-primary">
+ </div>
+ 
+ 
+ <div style='background-color:yellow'>
+
+    
+    
+
+
+<table class="table table-sm table-bordered table-striped">
+    <tr><th></th><th>Name</th><th>Category</th><th>Price</th></tr>
+    <tr *ngFor="let item1 of getSearch(); let i1 = index"
+            >
+        <td>{{i1 + 1}}</td>
+        <td>{{item1.name}}</td>
+        <td>
+            {{item1.category}}
+        </td>
+        <td>{{item1.price}}</td>
+    </tr>
+</table>
+
+
+
+
+</div>
